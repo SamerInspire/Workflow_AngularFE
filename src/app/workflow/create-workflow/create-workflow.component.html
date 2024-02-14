@@ -1,0 +1,135 @@
+﻿<!-- WorkflowEngineSampleCode -->
+<form class="form-horizontal" autocomplete="off" #createWorkflowForm="ngForm" (ngSubmit)="save()">
+  <abp-modal-header [title]="'CreateNewWorkflowScheme' | localize"
+    (onCloseClick)="bsModalRef.hide()"></abp-modal-header>
+  <div class="modal-body">
+    <div class="container">
+      <h2 class="text-center mb-4"> New Application Catalog</h2>
+      <form action="add.php" method="post">
+        <div class="form-group row required" style="padding-left: 190px; padding-right: 190px;">
+          <label class="col-md-3 col-form-label" for="name">
+            {{ "Code" | localize }}
+          </label>
+          <div class="col-md-9">
+            <input type="text" class="form-control" name="code" id="code" required minlength="2" maxlength="32"
+              [(ngModel)]="scheme.code" #nameModel="ngModel" #nameEl width="50%" />
+            <abp-validation-summary [control]="nameModel" [controlEl]="nameEl"></abp-validation-summary>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-group">
+            <input type="text" class="form-control" name="name" id="name" [(ngModel)]="scheme.name" #nameModel="ngModel"  placeholder="Name" required>
+          </div>
+          <div class=" col form-group">
+            <input type="text" class="form-control" name="desc" id="description" [(ngModel)]="scheme.description" #nameModel="ngModel" placeholder="Description" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-group">
+            <input type="text" class="form-control" name="flist" id="businessFunctionList" [(ngModel)]="scheme.businessFunctionList" #nameModel="ngModel"  placeholder="Business Function List"
+              required>
+          </div>
+          <div class="col form-group">
+            <input type="text" class="form-control" name="alink" id="accessLink" [(ngModel)]="scheme.accessLink" #nameModel="ngModel"  placeholder="Access Link" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-group">
+            <select class="form-select" id="category" name="category" [(ngModel)]="scheme.category" #nameModel="ngModel"  required>
+              <option value="" disabled selected>Category</option>
+              <option value="Platform">Platform</option>
+              <option value="Platform Component">Platform Component</option>
+              <option value="Integration Component">Integration Component</option>
+              <option value="Portal">Portal</option>
+              <option value="Application Service">Application Service</option>
+            </select>
+          </div>
+          <div class="col form-group">
+            <input type="text" class="form-control" name="appversion" id="applicationVersion" [(ngModel)]="scheme.applicationVersion" #nameModel="ngModel"  placeholder="Application Version"
+              required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-group">
+            <select class="form-select" id="applicationClassification" [(ngModel)]="scheme.applicationClassification" #nameModel="ngModel" >
+              <option value="" disabled selected>Application Classificaation</option>
+              <option value="option1">IT</option>
+              <option value="option2">Business</option>
+            </select>
+          </div>
+          <div class="col form-group">
+            <select class="form-select" id="itApplicationType" [(ngModel)]="scheme.itApplicationType" #nameModel="ngModel" >
+              <option value="" disabled selected>IT Application Type</option>
+              <option value="Type1">Type1</option>
+              <option value="Type2">Type2</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-group">
+            <select class="form-select" id="businessApplicationType" [(ngModel)]="scheme.businessApplicationType" #nameModel="ngModel" >
+              <option value="" disabled selected>Business Application Type</option>
+              <option value="option1"></option>
+              <option value="option2"></option>
+            </select>
+          </div>
+          <div class=" col form-group">
+            <input type="text" class="form-control" id="businessServiceCode" [(ngModel)]="scheme.businessServiceCode" #nameModel="ngModel"  placeholder="Business Service Code">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-group">
+            <input type="text" class="form-control" id="businessActivityCode" [(ngModel)]="scheme.businessActivityCode" #nameModel="ngModel"  placeholder="Business Activity Code">
+          </div>
+          <div class="col form-group">
+            <select class="form-select" id="businessCriticality" [(ngModel)]="scheme.businessCriticality" #nameModel="ngModel" >
+              <option value="" disabled selected>Business Criticality </option>
+              <option value="option1">High</option>
+              <option value="option2">Medium</option>
+              <option value="option2">Low</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-group">
+            <input type="text" class="form-control" id="targetUser" [(ngModel)]="scheme.targetUser" #nameModel="ngModel"  placeholder="Target User">
+          </div>
+          <div class="col form-group">
+            <input type="text" class="form-control" id="businessOwner" [(ngModel)]="scheme.businessOwner" #nameModel="ngModel"  placeholder="Business Owner">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-group">
+            <input type="text" class="form-control" id="serverCatalogCode" [(ngModel)]="scheme.serverCatalogCode" #nameModel="ngModel"  placeholder="Server Cataloge Code">
+          </div>
+          <div class="col form-group">
+            <select class="form-select" id="hostType" [(ngModel)]="scheme.hostType" #nameModel="ngModel" >
+              <option value="" disabled selected>Host Type</option>
+              <option value="option1">Cloud</option>
+              <option value="option2">Internal (on-prem)</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-group">
+            <input type="text" class="form-control" id="hostCenter" [(ngModel)]="scheme.hostCenter" #nameModel="ngModel"  placeholder="Host Center">
+          </div>
+          <div class="col form-group">
+            <input type="text" class="form-control" id="hostIP" [(ngModel)]="scheme.hostIP" #nameModel="ngModel"  placeholder="Hosted IP">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-group">
+            <select class="form-select" id="public" [(ngModel)]="scheme.public" #nameModel="ngModel" >
+              <option value="" disabled selected>Public</option>
+              <option value="option1">Yes</option>
+              <option value="option2">No</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <abp-modal-footer [cancelDisabled]="Registering" [saveDisabled]="!createWorkflowForm.form.valid || Registering"
+    (onCancelClick)="bsModalRef.hide()"></abp-modal-footer>
+</form>
